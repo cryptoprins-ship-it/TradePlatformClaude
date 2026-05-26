@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import yaml
 
@@ -15,10 +15,17 @@ class Settings:
     taker_fee_bps: float
     starting_equity: float
     anthropic_model: str
-    anthropic_api_key: str
+    anthropic_api_key: str = field(repr=False)
     db_path: str
     news_rss_url: str
     risk: RiskLimits
+
+
+def _require_api_key() -> str:
+    key = os.environ.get("ANTHROPIC_API_KEY")
+    if not key:
+        raise RuntimeError("ANTHROPIC_API_KEY environment variable is not set")
+    return key
 
 
 def load_settings(config_path: str = "config.yaml") -> Settings:
@@ -40,7 +47,7 @@ def load_settings(config_path: str = "config.yaml") -> Settings:
         taker_fee_bps=float(raw["taker_fee_bps"]),
         starting_equity=float(raw["starting_equity"]),
         anthropic_model=str(raw["anthropic_model"]),
-        anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY", ""),
+        anthropic_api_key=_require_api_key(),
         db_path=str(raw["db_path"]),
         news_rss_url=str(raw["news_rss_url"]),
         risk=risk,
