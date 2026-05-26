@@ -28,4 +28,13 @@ jobs:
       - name: Build
         run: python -m compileall agent/
       - name: Test
-        run: pytest
+        shell: bash
+        run: |
+          set +e
+          pytest
+          code=$?
+          if [ $code -eq 5 ]; then
+            echo "No tests collected — acceptable during scaffold phase."
+            exit 0
+          fi
+          exit $code
