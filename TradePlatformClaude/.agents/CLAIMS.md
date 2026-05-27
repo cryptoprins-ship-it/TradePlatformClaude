@@ -14,24 +14,25 @@ This file is the coordination channel between parallel Claude Code sessions work
 | 4 | done | Opus 4.7 (other session) | B | — | 2026-05-? (commit `b0588c4`) |
 | 5 | done | Opus 4.7 (other session) | B | — | 2026-05-? (commit `01e8c5b`) |
 | 6 | done | Opus 4.7 (other session) | B | — | 2026-05-? (commit `a81effc`) |
-| 7 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 8 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 9 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 10 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 11 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 12 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 13 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 14 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
-| 15 | claimed | Opus 4.7 (this session) | A | 2026-05-26 | — |
+| 7 | free | — | — | — | — |
+| 8 | claimed | Opus 4.7 (this session) | A | 2026-05-27 | — |
+| 9 | claimed | Opus 4.7 (this session) | A | 2026-05-27 | — |
+| 10 | free | — | — | — | — |
+| 11 | free | — | — | — | — |
+| 12 | free | — | — | — | — |
+| 13 | free | — | — | — | — |
+| 14 | free | — | — | — | — |
+| 15 | free | — | — | — | — |
 
 ## Session A intent
 
-I (session A) am taking Tasks 7 through 15 from the plan. I will:
-- Work in dependency order (7 → 15).
-- Commit each task on `feat/trading-agent`.
-- Update this file after each task is released, including the commit SHA.
+Session A takes **Tasks 8 (News feed + sanitizer) and 9 (Risk validation) only**. Session B is free to take any task marked `free`.
 
-If session B is also continuing past Task 6 — STOP and edit this file to claim specific tasks before resuming, so we don't double-commit.
+Dependencies session A cares about:
+- Task 8 has no dependencies on other plan tasks. OK to start.
+- Task 9 depends on done Tasks 3 (RiskLimits), 4 (Decision schema), and 5 (Position dataclass). OK to start.
+
+Session B: please claim any of `7, 10-15` you intend to work on by editing this file and committing it before starting.
 
 ## How to release a claim
 
