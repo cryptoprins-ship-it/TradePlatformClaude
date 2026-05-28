@@ -1,4 +1,4 @@
-from agent.data.market import MarketFeed, MarketData, FuturesMetrics
+from agent.data.market import MarketFeed, MarketData
 
 
 class FakeExchange:

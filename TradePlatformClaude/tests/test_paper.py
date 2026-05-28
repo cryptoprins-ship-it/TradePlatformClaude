@@ -1,4 +1,4 @@
-from agent.execution.base import Fill, ExecutionResult
+from agent.execution.base import ExecutionResult
 from agent.execution.paper import PaperExecutor
 from agent.llm.schema import Decision
 from agent.state.store import Position, FLAT

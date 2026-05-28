@@ -8,31 +8,31 @@ This file is the coordination channel between parallel Claude Code sessions work
 
 | Task | Status | Agent | Session | Claimed | Released |
 |------|--------|-------|---------|---------|----------|
-| 1 | done | Opus 4.7 (this session) | A | 2026-05-22 | 2026-05-22 (commit `61327d6`) |
-| 2 | done | Opus 4.7 (this session) | A | 2026-05-22 | 2026-05-22 (commit `2cf8763`) |
-| 3 | done | Opus 4.7 (this session) | A | 2026-05-26 | 2026-05-26 (commit `e5931c9`) |
-| 4 | done | Opus 4.7 (other session) | B | — | 2026-05-? (commit `b0588c4`) |
-| 5 | done | Opus 4.7 (other session) | B | — | 2026-05-? (commit `01e8c5b`) |
-| 6 | done | Opus 4.7 (other session) | B | — | 2026-05-? (commit `a81effc`) |
-| 7 | free | — | — | — | — |
-| 8 | claimed | Opus 4.7 (this session) | A | 2026-05-27 | — |
-| 9 | claimed | Opus 4.7 (this session) | A | 2026-05-27 | — |
-| 10 | free | — | — | — | — |
-| 11 | free | — | — | — | — |
-| 12 | free | — | — | — | — |
-| 13 | free | — | — | — | — |
-| 14 | free | — | — | — | — |
-| 15 | free | — | — | — | — |
+| 1 | done | Opus 4.7 | A | 2026-05-22 | 2026-05-22 (commit `61327d6`) |
+| 2 | done | Opus 4.7 | A | 2026-05-22 | 2026-05-22 (commit `2cf8763`) |
+| 3 | done | Opus 4.7 | A | 2026-05-26 | 2026-05-26 (commit `e5931c9`) |
+| 4 | done | Opus 4.7 | B | — | 2026-05-? (commit `b0588c4`) |
+| 5 | done | Opus 4.7 | B | — | 2026-05-? (commit `01e8c5b`) |
+| 6 | done | Opus 4.7 | B | — | 2026-05-? (commit `a81effc`) |
+| 7 | done | Opus 4.7 | B | — | 2026-05-? (commit `db46a5f`) |
+| 8 | done | Opus 4.7 | A | 2026-05-27 | 2026-05-27 (commit `ab60b6a`) |
+| 9 | done | Opus 4.7 | A | 2026-05-27 | 2026-05-27 (commit `efff7cb`) |
+| 10 | done | Opus 4.7 | B | — | 2026-05-? (commit `95ea31d`) |
+| 11 | done | Opus 4.7 | B | — | 2026-05-? (commit `c21f0fb`) |
+| 12 | done | Opus 4.7 | B | — | 2026-05-? (commit `a438a6c`) |
+| 13 | done | Opus 4.7 | C | 2026-05-28 | 2026-05-28 (commit `e57bfb7`) |
+| 14 | done | Opus 4.7 | C | 2026-05-28 | 2026-05-28 (commit `eb3e4f7`) |
+| 15 | done | Opus 4.7 | C | 2026-05-28 | 2026-05-28 (commit `889f908`) |
 
-## Session A intent
+## Status
 
-Session A takes **Tasks 8 (News feed + sanitizer) and 9 (Risk validation) only**. Session B is free to take any task marked `free`.
+All 15 tasks complete. Branch `feat/trading-agent` ready for merge to `main`.
 
-Dependencies session A cares about:
-- Task 8 has no dependencies on other plan tasks. OK to start.
-- Task 9 depends on done Tasks 3 (RiskLimits), 4 (Decision schema), and 5 (Position dataclass). OK to start.
-
-Session B: please claim any of `7, 10-15` you intend to work on by editing this file and committing it before starting.
+CI verified locally 2026-05-28:
+- `mypy agent/` — 0 errors, 20 source files
+- `ruff check agent/ tests/` — 0 errors
+- `python -m compileall agent/` — ok
+- `pytest` — 49 passed
 
 ## How to release a claim
 
