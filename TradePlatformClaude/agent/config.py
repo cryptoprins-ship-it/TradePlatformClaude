@@ -1,7 +1,9 @@
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import yaml
+from dotenv import load_dotenv
 
 from agent.risk.limits import RiskLimits
 
@@ -29,6 +31,11 @@ def _require_api_key() -> str:
 
 
 def load_settings(config_path: str = "config.yaml") -> Settings:
+    # Load .env file from the config's directory (or CWD) before reading env.
+    # Does not override existing env vars — explicit env still wins.
+    env_path = Path(config_path).resolve().parent / ".env"
+    if env_path.is_file():
+        load_dotenv(env_path)
     with open(config_path) as f:
         raw = yaml.safe_load(f)
     r = raw["risk"]
