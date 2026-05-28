@@ -1,0 +1,16 @@
+symbol: "BTC/USDT:USDT"
+timeframe: "1h"
+candle_limit: 100
+slippage_bps: 2.0
+taker_fee_bps: 5.0
+starting_equity: 10000.0
+anthropic_model: "claude-opus-4-7"
+db_path: "agent.db"
+news_rss_url: "https://cointelegraph.com/rss"
+
+risk:
+  max_leverage: 5
+  max_position_pct: 0.5
+  require_stop_loss: true
+  max_daily_loss_pct: 0.10
+  single_position: true
