@@ -9,6 +9,10 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    working-directory: TradePlatformClaude
+
 jobs:
   build:
     runs-on: ubuntu-latest
